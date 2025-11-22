@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EIMC - Envilinks Interconnectivity Media Concept</title>
+    <link rel="icon" href="logo.jpg" type="image/jpeg">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --background-color: #f9f9f9;
+            --text-color: #333;
+            --light-color: #fff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: var(--transition);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 15px;
+            object-fit: cover;
+        }
+
+        .company-info h1 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .company-info .motto {
+            font-style: italic;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .theme-toggle {
+            background: var(--secondary-color);
+            border: none;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            background: var(--accent-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.9)), url('logo.jpg') center/cover;
+            color: var(--light-color);
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 5rem 0;
+            background-color: var(--light-color);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--light-color);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        .service-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        /* Calculator Section */
+        .calculator {
+            padding: 5rem 0;
+            background-color: var(--background-color);
+        }
+
+        .calculator-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--light-color);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .calculator-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .form-group select,
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .calculate-btn {
+            grid-column: span 2;
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .calculate-btn:hover {
+            background: var(--primary-color);
+        }
+
+        .result {
+            grid-column: span 2;
+            text-align: center;
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: #f0f8ff;
+            border-radius: 4px;
+            display: none;
+        }
+
+        .result h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .result p {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        /* Locations Section */
+        .locations {
+            padding: 5rem 0;
+            background-color: var(--light-color);
+        }
+
+        .locations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .location-card {
+            background: var(--light-color);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .location-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .location-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        .location-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--secondary-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-btn {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-btn:hover {
+            background: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Floating Reviews */
+        .floating-reviews {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .reviews-toggle {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .reviews-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .reviews-container {
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            width: 300px;
+            background: var(--light-color);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            padding: 1.5rem;
+            display: none;
+            color: var(--text-color);
+        }
+
+        .reviews-container.active {
+            display: block;
+        }
+
+        .review-title {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            text-align: center;
+        }
+
+        .review-avatars {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .avatar:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        .avatar:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        .review-text {
+            font-style: italic;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .reviewer {
+            text-align: center;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* Theme Variants */
+        .theme-blue {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+        }
+
+        .theme-green {
+            --primary-color: #1e5631;
+            --secondary-color: #4caf50;
+            --accent-color: #ff9800;
+        }
+
+        .theme-purple {
+            --primary-color: #4a235a;
+            --secondary-color: #9b59b6;
+            --accent-color: #e67e22;
+        }
+
+        .theme-dark {
+            --primary-color: #1a1a2e;
+            --secondary-color: #16213e;
+            --accent-color: #0f3460;
+            --background-color: #121212;
+            --text-color: #e0e0e0;
+            --light-color: #1e1e1e;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .logo-section {
+                margin-bottom: 1rem;
+            }
+
+            .stats {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .calculator-form {
+                grid-template-columns: 1fr;
+            }
+
+            .calculate-btn,
+            .result {
+                grid-column: 1;
+            }
+
+            .reviews-container {
+                width: 250px;
+            }
+        }
+    </style>
+</head>
+<body class="theme-blue">
+    <!-- Header Section -->
+    <header>
+        <div class="container header-content">
+            <div class="logo-section">
+                <img src="logo.jpg" alt="EIMC Logo" class="logo">
+                <div class="company-info">
+                    <h1>EIMC</h1>
+                    <p class="motto">Primus Inter Cetera</p>
+                </div>
+            </div>
+            <button class="theme-toggle" id="themeToggle">
+                <span>Change Theme</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2>Envilinks Interconnectivity Media Concept</h2>
+            <p>Professional digital solutions with 3 years of excellence and 98% customer satisfaction</p>
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">3+</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Customer Satisfaction</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Projects Completed</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🎨</div>
+                    <h3>Graphics Design</h3>
+                    <p>Professional visual communication designs for your brand</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🌐</div>
+                    <h3>Internet Services</h3>
+                    <p>Reliable and high-speed internet connectivity solutions</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📝</div>
+                    <h3>Internet Registrations</h3>
+                    <p>Domain registration and online business setup services</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💻</div>
+                    <h3>Web Design</h3>
+                    <p>Custom, responsive websites that drive results</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section class="calculator">
+        <div class="container">
+            <h2 class="section-title">Service Calculator</h2>
+            <div class="calculator-container">
+                <form class="calculator-form" id="calculatorForm">
+                    <div class="form-group">
+                        <label for="service">Select Service</label>
+                        <select id="service" required>
+                            <option value="">Choose a service</option>
+                            <option value="graphics">Graphics Design</option>
+                            <option value="internet">Internet Services</option>
+                            <option value="registration">Internet Registrations</option>
+                            <option value="web">Web Design</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="days">Estimated Days</label>
+                        <input type="number" id="days" min="1" max="30" placeholder="Enter number of days" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="severity">Complexity Level</label>
+                        <select id="severity" required>
+                            <option value="">Select complexity</option>
+                            <option value="low">Low</option>
+                            <option value="medium">Medium</option>
+                            <option value="high">High</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="urgency">Urgency</label>
+                        <select id="urgency" required>
+                            <option value="">Select urgency</option>
+                            <option value="normal">Normal</option>
+                            <option value="urgent">Urgent</option>
+                            <option value="critical">Critical</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="calculate-btn">Calculate Cost</button>
+                    <div class="result" id="result">
+                        <h3>Estimated Cost</h3>
+                        <p id="costAmount">₦0.00</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Locations Section -->
+    <section class="locations">
+        <div class="container">
+            <h2 class="section-title">Our Locations</h2>
+            <div class="locations-grid">
+                <div class="location-card">
+                    <div class="location-icon">📍</div>
+                    <h3>Iseyin, Oyo State</h3>
+                    <p>Visit our physical office in Iseyin for personalized consultations and services.</p>
+                </div>
+                <div class="location-card">
+                    <div class="location-icon">📍</div>
+                    <h3>Akure, Ondo State</h3>
+                    <p>Our Akure branch offers comprehensive digital solutions for businesses in the region.</p>
+                </div>
+                <div class="location-card">
+                    <div class="location-icon">🛒</div>
+                    <h3>Online Store</h3>
+                    <p>Access our services from anywhere through our secure online platform.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>Phone: +234 814 244 2012</p>
+                    <p>Email: info@eimc.com</p>
+                    <div class="social-links">
+                        <a href="https://wa.me/+2348142442012" class="social-btn" target="_blank">WhatsApp</a>
+                        <a href="https://www.facebook.com/Immaculateenvilinks" class="social-btn" target="_blank">Facebook</a>
+                        <a href="https://www.linkedin.com/in/victor-adeoti-441522366?utm_source=share_via&utm_content=profile&utm_medium=member_android" class="social-btn" target="_blank">LinkedIn</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <p><a href="#services" style="color: #fff;">Services</a></p>
+                    <p><a href="#calculator" style="color: #fff;">Calculator</a></p>
+                    <p><a href="#locations" style="color: #fff;">Locations</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>About EIMC</h3>
+                    <p>Envilinks Interconnectivity Media Concept - Providing professional digital solutions with excellence since 2022.</p>
+                    <p><em>Primus Inter Cetera</em></p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; EIMC 2025. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Reviews -->
+    <div class="floating-reviews">
+        <button class="reviews-toggle" id="reviewsToggle">💬</button>
+        <div class="reviews-container" id="reviewsContainer">
+            <h3 class="review-title">Customer Reviews</h3>
+            <div class="review-avatars">
+                <div class="avatar">JD</div>
+                <div class="avatar">SA</div>
+                <div class="avatar">MK</div>
+            </div>
+            <p class="review-text">"EIMC delivered our website ahead of schedule. Professional and reliable service!"</p>
+            <p class="reviewer">- James D.</p>
+        </div>
+    </div>
+
+    <script>
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        const themes = ['theme-blue', 'theme-green', 'theme-purple', 'theme-dark'];
+        let currentThemeIndex = 0;
+
+        themeToggle.addEventListener('click', () => {
+            // Remove current theme
+            body.classList.remove(themes[currentThemeIndex]);
+            
+            // Move to next theme
+            currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+            
+            // Apply new theme
+            body.classList.add(themes[currentThemeIndex]);
+            
+            // Update button text
+            const themeNames = ['Blue', 'Green', 'Purple', 'Dark'];
+            themeToggle.innerHTML = `<span>${themeNames[currentThemeIndex]} Theme</span>`;
+        });
+
+        // Reviews Toggle Functionality
+        const reviewsToggle = document.getElementById('reviewsToggle');
+        const reviewsContainer = document.getElementById('reviewsContainer');
+
+        reviewsToggle.addEventListener('click', () => {
+            reviewsContainer.classList.toggle('active');
+        });
+
+        // Close reviews when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!reviewsToggle.contains(e.target) && !reviewsContainer.contains(e.target)) {
+                reviewsContainer.classList.remove('active');
+            }
+        });
+
+        // Calculator Functionality
+        const calculatorForm = document.getElementById('calculatorForm');
+        const resultDiv = document.getElementById('result');
+        const costAmount = document.getElementById('costAmount');
+
+        // Base prices for services
+        const servicePrices = {
+            graphics: { base: 15000, daily: 2000 },
+            internet: { base: 25000, daily: 3000 },
+            registration: { base: 10000, daily: 1000 },
+            web: { base: 50000, daily: 5000 }
+        };
+
+        // Complexity multipliers
+        const complexityMultipliers = {
+            low: 1,
+            medium: 1.5,
+            high: 2
+        };
+
+        // Urgency multipliers
+        const urgencyMultipliers = {
+            normal: 1,
+            urgent: 1.3,
+            critical: 1.7
+        };
+
+        calculatorForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const service = document.getElementById('service').value;
+            const days = parseInt(document.getElementById('days').value);
+            const complexity = document.getElementById('severity').value;
+            const urgency = document.getElementById('urgency').value;
+            
+            if (!service || !days || !complexity || !urgency) {
+                alert('Please fill all fields');
+                return;
+            }
+            
+            // Calculate cost
+            const basePrice = servicePrices[service].base;
+            const dailyRate = servicePrices[service].daily;
+            const complexityMultiplier = complexityMultipliers[complexity];
+            const urgencyMultiplier = urgencyMultipliers[urgency];
+            
+            let cost = (basePrice + (dailyRate * days)) * complexityMultiplier * urgencyMultiplier;
+            
+            // Format as Nigerian Naira
+            costAmount.textContent = `₦${cost.toLocaleString()}`;
+            resultDiv.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
