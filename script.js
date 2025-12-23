@@ -535,7 +535,7 @@ function initPortfolio() {
     let displayedProjects = [];
     let currentFilter = 'all';
     let currentView = 'grid';
-    let itemsPerLoad = 6;
+    let itemsPerLoad = 1;
     let currentIndex = 0;
     
     // Initialize portfolio
