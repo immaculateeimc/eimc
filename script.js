@@ -587,7 +587,7 @@ function initPortfolio() {
             projectPromises.push(
                 new Promise((resolve) => {
                     const img = new Image();
-                    img.src = `images/${i}.jpg`;
+                    img.src = `${i}.jpg`;
                     
                     img.onload = function() {
                         // Assign random category for demonstration
