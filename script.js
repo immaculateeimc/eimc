@@ -1,5 +1,3 @@
-// EIMC Portfolio Website - Enhanced for Mobile & PC
-
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize all components
     initMobileNavigation();
@@ -535,7 +533,7 @@ function initPortfolio() {
     let displayedProjects = [];
     let currentFilter = 'all';
     let currentView = 'grid';
-    let itemsPerLoad = 1;
+    let itemsPerLoad = window.innerWidth < 768 ? 4 : 6;
     let currentIndex = 0;
     
     // Initialize portfolio
@@ -580,45 +578,26 @@ function initPortfolio() {
     async function loadPortfolio() {
         const loading = portfolioGrid.querySelector('.loading');
         
-        // Try to load images 1-29 from images folder
-        const projectPromises = [];
+        // Generate projects data
+        allProjects = [];
         
         for (let i = 1; i <= 29; i++) {
-            projectPromises.push(
-                new Promise((resolve) => {
-                    const img = new Image();
-                    img.src = `${i}.jpg`;
-                    
-                    img.onload = function() {
-                        // Assign random category for demonstration
-                        const categories = ['web', 'design', 'branding'];
-                        const randomCategory = categories[Math.floor(Math.random() * categories.length)];
-                        
-                        resolve({
-                            id: i,
-                            src: img.src,
-                            category: randomCategory,
-                            title: `Project ${i}`,
-                            description: 'Professional digital solution delivered with excellence.',
-                            tags: randomCategory === 'web' ? ['Web', 'Development'] : 
-                                  randomCategory === 'design' ? ['Design', 'UI/UX'] : 
-                                  ['Branding', 'Identity']
-                        });
-                    };
-                    
-                    img.onerror = function() {
-                        // Image doesn't exist, resolve with null
-                        resolve(null);
-                    };
-                })
-            );
+            // Assign random category for demonstration
+            const categories = ['web', 'design', 'branding'];
+            const randomCategory = categories[Math.floor(Math.random() * categories.length)];
+            
+            const project = {
+                id: i,
+                src: `${i}.jpg`, // Make sure this path is correct
+                category: randomCategory,
+                title: `Project ${i}`,
+                description: 'Professional digital solution delivered with excellence.',
+                tags: randomCategory === 'web' ? ['Web', 'Development'] : 
+                      randomCategory === 'design' ? ['Design', 'UI/UX'] : 
+                      ['Branding', 'Identity']
+            };
+            allProjects.push(project);
         }
-        
-        // Wait for all images to load
-        const results = await Promise.all(projectPromises);
-        
-        // Filter out null results (images that don't exist)
-        allProjects = results.filter(project => project !== null);
         
         // Remove loading indicator
         if (loading) {
@@ -1170,7 +1149,10 @@ window.addEventListener('load', function() {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const img = entry.target;
-                    img.src = img.dataset.src;
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                    }
+                    img.classList.add('loaded');
                     imageObserver.unobserve(img);
                 }
             });
